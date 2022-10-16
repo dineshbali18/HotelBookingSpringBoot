@@ -19,7 +19,10 @@ function Bookings(){
     return (
         <div>
             <Navbar/>
-            {bookings.map((booking,index)=>{
+            {bookings.length==0?
+              <div>No Bookings were done with this account.</div>
+            :<></>}
+            {bookings.length!=0&&bookings.map((booking,index)=>{
               return (
                 <div style={{border:'solid',margin:'2px'}}>
             <section class="text-gray-600 body-font overflow-hidden">

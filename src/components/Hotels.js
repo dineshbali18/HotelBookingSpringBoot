@@ -33,10 +33,10 @@ function Hotel(props){
               {hotel.map((hotelinside,index)=>{return (
           <div class="xl:w-1/4 md:w-1/2 p-4">
         <div class="bg-gray-100 p-6 rounded-lg">
-          <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/721x401" alt="content"/>
-          <h3 class="tracking-widest text-red-500 text-xs font-medium title-font">SUBTITLE</h3>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
-          <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          <img class="h-40 rounded w-full object-cover object-center mb-6" src={hotelinside.img[0]} alt="content"/>
+          <h3 class="tracking-widest text-red-500 text-xs font-medium title-font">Hotel</h3>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{hotelinside.hotelname}</h2>
+          <p class="leading-relaxed text-base">{hotelinside.hotel_description}.</p>
           <Link to={{pathname:'/hotel/description'
           }} state={{hotelObj:hotelinside}} class="text-red-500 inline-flex items-center mt-3">Book Hotel
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">

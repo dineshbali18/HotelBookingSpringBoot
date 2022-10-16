@@ -11,6 +11,7 @@ function Signup(){
         password:"",
         error:""
     })
+    const [msg,setMsg]=useState('')
 
     const {name,email,password}=user;
 
@@ -20,7 +21,17 @@ function Signup(){
 
     const onSubmit=(e)=>{
         e.preventDefault();
-        signup({name,email,password})
+        if(name==""||email==""||password==""){
+          setMsg("Details are missing....")
+        }
+        else{
+        signup({name,email,password}).then(()=>{
+          setMsg('signup successfull...')
+
+        }).catch(err=>{
+          setMsg('check your Backend...')
+        })
+      }
     }
     
 
@@ -48,6 +59,7 @@ function Signup(){
         <input type="password" id="password" name="password" onChange={handleChange("password")} value={password} class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <button onClick={(e)=>{onSubmit(e)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Signup</button>
+      <label style={{color:'green',margin:'100'}}>{msg}</label>
     </div>
   </div>
 </section>

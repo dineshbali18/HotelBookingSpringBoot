@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import {useState} from "react"
 
 import {signin} from './helper/authcalls'
+import Destination from "./Destinations";
 
 function Signin(){
     const [user,setUser]=useState({
@@ -10,6 +11,7 @@ function Signin(){
         error:"",
         success:false
     })
+
 
     const {email,password}=user;
 
@@ -26,11 +28,8 @@ function Signin(){
             localStorage.setItem('token',data.token);
             localStorage.setItem('email',data.user.email);
             localStorage.setItem('name',data.user.name);
-            localStorage.setItem('id',data.user._id)
-            // var x=localStorage.getItem('token')
-            // console.log(("x",x));
-            // var y=localStorage.getItem('email')
-            // console.log("y",y);
+            localStorage.setItem('id',data.user._id);
+            window.location.reload(false);
         }
             )
           .catch(()=>{console.log("Error in signup")});
@@ -38,7 +37,10 @@ function Signin(){
 
     return (
         <div>
-            <Navbar/>
+            
+      {localStorage.getItem('token')==undefined||null?
+      <>
+      <Navbar/>
     <div style={{backgroundImage:`url("https://img.freepik.com/free-photo/landscape-shot-beautiful-cholatse-mountains-body-water-khumbu-nepal_181624-24825.jpg?w=1380&t=st=1665850739~exp=1665851339~hmac=38a69aefd35b0fd7b7f6c677620de4807d47443b261b8de7f7e6d6f34fc6d7a7")`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
     <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
@@ -61,7 +63,7 @@ function Signin(){
     </div>
   </div>
 </section>
-</div>
+</div></>:<Destination/>}
 </div>
     )
 }

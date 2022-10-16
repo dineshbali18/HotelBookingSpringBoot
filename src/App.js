@@ -6,6 +6,7 @@ import Destination from "./components/Destinations";
 import Hotel from "./components/Hotels";
 import HotelDesc from "./components/HotelDesc";
 import Bookings from "./components/Bookings";
+import Signout from "./components/Signout";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/hotels/:cityname" element={<Hotel/>}/>
       <Route path="/hotel/description" element={<HotelDesc/>}/>
       <Route path="/bookings" element={<Bookings/>}/>
+      <Route path="/signout" element={<Signout/>}/>
       {/* <Route path="/" element={<Signup/>}/>
       <Route path="/" element={<Signup/>}/> */}
     </Routes>
