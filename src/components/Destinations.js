@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getdestinations } from "./helper/authcalls";
 import Navbar from "./Navbar";
 import {Link,useLocation} from 'react-router-dom'
+import Signin from "./Signin";
 
 
 function Destination(){
@@ -27,6 +28,8 @@ function Destination(){
 
 
     return (
+      <>
+      {(localStorage.getItem('token')!='undefined'||localStorage.getItem('token')!=null)?
         <>
         <Navbar/>
         <section class="text-gray-600 body-font">
@@ -74,6 +77,7 @@ function Destination(){
   </div>
   </div>
 </section>
+        </>:<><Signin/></>}
         </>
     )
 }

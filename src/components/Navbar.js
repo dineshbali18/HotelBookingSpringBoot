@@ -19,7 +19,7 @@ function Navbar(){
       </>:<>
       <Link to="/destination" class="mr-5 hover:text-gray-900">Destinations</Link>
       <Link to="/bookings" class="mr-5 hover:text-gray-900">MyBookings</Link>
-      <Link to="/signin" onClick={()=>{window.location.reload();localStorage.clear()}} class="mr-5 hover:text-gray-900">Signout</Link>
+      <Link to="/signin" onClick={()=>{localStorage.clear()}} class="mr-5 hover:text-gray-900">Signout</Link>
       </>}
       {localStorage.getItem('role')==1? <Link to="/admin" class="mr-5 hover:text-gray-900">Admin</Link>:<></>}
     </nav>

@@ -6,6 +6,7 @@ import DeleteDestination from "./DeleteDestination";
 import DeleteHotel from "./DeleteHotel";
 import GetBookings from "./GetBookings";
 import Navbar from "./Navbar";
+import Signin from "./Signin";
 
 function AdminDashboard(){
     const [displ,setDispl]=useState('')
@@ -15,6 +16,7 @@ function AdminDashboard(){
     }
     return (
         <>
+        {(localStorage.getItem('token')!='undefined'||localStorage.getItem('token')!=null)?<>
         <Navbar/>
         <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
@@ -93,6 +95,7 @@ function AdminDashboard(){
 
   </div>
 </section>
+</>:<><Signin/></>}
 </>
     )
 }

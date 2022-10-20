@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getBookings } from "./helper/authcalls";
 import Navbar from "./Navbar";
+import Signin from "./Signin";
 
 function Bookings(){
 
@@ -17,6 +18,8 @@ function Bookings(){
     })
   },[])
     return (
+      <>
+      {(localStorage.getItem('token')!='undefined'||localStorage.getItem('token')!=null)?
         <div>
             <Navbar/>
             {bookings.length==0?
@@ -51,6 +54,8 @@ function Bookings(){
               )
 })}
         </div>
+        :<><Signin/></>}
+        </>
     )
 }
 
