@@ -7,6 +7,12 @@ import Hotel from "./components/Hotels";
 import HotelDesc from "./components/HotelDesc";
 import Bookings from "./components/Bookings";
 import Signout from "./components/Signout";
+import AdminDashboard from "./components/AdminDashboard";
+import CreateHotel from "./components/CreateHotel";
+import DeleteDestination from "./components/DeleteDestination";
+import DeleteHotel from "./components/DeleteHotel";
+import CreateDestination from "./components/CreateDestination";
+// import Payment from "./components/Payment";
 
 function App() {
   return (
@@ -19,6 +25,13 @@ function App() {
       <Route path="/hotel/description" element={<HotelDesc/>}/>
       <Route path="/bookings" element={<Bookings/>}/>
       <Route path="/signout" element={<Signout/>}/>
+      <Route path="/admin" element={<AdminDashboard/>}/>
+      <Route path="/admin/create/destination" element={<CreateDestination/>}/>
+      <Route path="/admin/delete/destination" element={<DeleteDestination/>}/>
+      <Route path="/admin/create/hotel" element={<CreateHotel/>}/>
+      <Route path="/admin/delete/hotel" element={<DeleteHotel/>}/>
+      {/* <Route path="/user/payment" element={<Payment/>}/> */}
+
       {/* <Route path="/" element={<Signup/>}/>
       <Route path="/" element={<Signup/>}/> */}
     </Routes>

@@ -21,6 +21,7 @@ function Navbar(){
       <Link to="/bookings" class="mr-5 hover:text-gray-900">MyBookings</Link>
       <Link to="/signout" onClick={()=>{localStorage.clear()}} class="mr-5 hover:text-gray-900">Signout</Link>
       </>}
+      {localStorage.getItem('role')==1? <Link to="/admin" class="mr-5 hover:text-gray-900">Admin</Link>:<></>}
     </nav>
   </div>
 </header>

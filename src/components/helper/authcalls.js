@@ -44,6 +44,34 @@ export const getBookings=(id)=>{
   .catch(err => console.log(err));
 }
 
+export const getNameById=(id)=>{
+  return fetch(`${API}/user/${id}`,{
+    method:'GET',
+    headers:{
+        Accept: "application/json",
+        // Authorization: `Bearer ${token}`
+    }
+}).then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
+export const getAllBookings=()=>{
+  return fetch(`${API}/all/bookings`,{
+    method:'GET',
+    headers:{
+        Accept: "application/json",
+        // Authorization: `Bearer ${token}`
+    }
+}).then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+}
+
+
 export const getdestinations=()=>{
     return fetch(`${API}/destinations`,{
         method:'GET',
@@ -59,6 +87,19 @@ export const getdestinations=()=>{
 
 export const getHotelsByCity=(city)=>{
   return fetch(`${API}/destination/${city.cityname}/hotels`,{
+    method:'GET',
+    headers:{
+        Accept: "application/json",
+        // Authorization: `Bearer ${token}`
+    }
+}).then(response => {
+    return response.json();
+  })
+  .catch(err => console.log(err));
+
+}
+export const getHotelsByCity2=(city)=>{
+  return fetch(`${API}/destination/${city}/hotels`,{
     method:'GET',
     headers:{
         Accept: "application/json",
@@ -115,3 +156,45 @@ export const isAutheticated = () => {
     return false;
   }
 };
+
+export const deleteHotel=(hotelid)=>{
+  return fetch(`${API}/destination/delete/hotel/${hotelid}`,{
+    method:'DELETE'
+  })
+}
+
+export const deleteDestinationback=(destinationid)=>{
+  return fetch(`${API}/admin/delete/destinations/${destinationid}`,{
+    method:'DELETE'
+  })
+}
+
+export const createDestination=(destData)=>{
+  return fetch(`${API}/admin/create/destination`,{
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(destData)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}
+
+export const createHotel=(hotelData)=>{
+  return fetch(`${API}/destination/create/hotels`,{
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(hotelData)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+}

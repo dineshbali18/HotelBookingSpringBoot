@@ -34,8 +34,6 @@ function Destination(){
     <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
     {destinations.map((dest,index)=>{return(
       <>
-      {/* <div class="flex flex-wrap -m-4"> */}
-      {/* <div class="p-4 md:w-1/3"> */}
       {dest.map((destinati,inde)=>{return(
         <div class="w-1/3 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
           <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={destinati.img} alt="blog"/>

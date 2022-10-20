@@ -7,18 +7,25 @@ import {useLocation} from "react-router-dom"
 function HotelDesc(props){
 
   const {hotelObj}=useLocation().state;
-  console.log("sfzfsdddddgsg",hotelObj)
 
   const [adultCount,setAdultCount]=useState(0);
   const [childCount,setChildCount]=useState(0);
   // const [numberOfPeople,setPeople]=useState(0);
   // const [totalPrice,setTotalPrice]=useState(0);
+  const [msgPay,setPay]=useState('');
   const [from,setFrom]=useState('')
   const [to,setTo]=useState('')
   const [userId,setUserId]=useState(localStorage.getItem('id'));
   const [hotelname,setHotelName]=useState(hotelObj.hotelname)
   const [hotel_destination,setHotelDestination]=useState(hotelObj.hotel_destination)
   const [msg,setMsg]=useState('')
+  const [book,setBook]=useState(0);
+  const [cardNum,setCard]=useState('')
+  const [expiry,setEx]=useState('')
+  const [c,setC]=useState('')
+
+
+
 
   // const {hotelname,hotel_destination}=hotelObj
 
@@ -73,15 +80,35 @@ function HotelDesc(props){
       setMsg('Details not Satisfied..')
     }
     else{
-    addBooking({hotel_name,adults_count,children_count,price,destination,userId,from,to}).then(()=>{
-      setMsg('Booking Done..!')
-    })
-    .catch(()=>{
-      setMsg("there is an error plz check backend")
-    })
+      setBook(1);
+      setMsg('')
   }
 
   }
+
+  const onPay=(e)=>{
+    e.preventDefault();
+    if(c==''||expiry==''||cardNum==''){
+      setPay('Check Payment Details')
+    }
+    else{
+
+    let price=adultCount*(hotelObj.adultPrice)+childCount*(hotelObj.childPrice)
+    let hotel_name=hotelObj.hotelname;
+    let adults_count=adultCount;
+    let children_count=childCount;
+    let destination=hotelObj.hotel_destination;
+    if(hotel_name==""||adults_count==0||price==0||destination==""||from==""||to==""){
+      setMsg('Details not Satisfied.. ')
+    }
+    else{
+    addBooking({hotel_name,adults_count,children_count,price,destination,userId,from,to})
+    setMsg('Booking Done')
+    setPay('Payment and Booking are Successfull')
+    }
+  }
+  }
+  
 
 
 
@@ -148,7 +175,7 @@ function HotelDesc(props){
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">Rs.{adultCount*(hotelObj.adultPrice)+childCount*(hotelObj.childPrice)}.00</span>
-          <button onClick={(e)=>{onSubmit(e)}} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Book</button>
+<button onClick={(e)=>{onSubmit(e)}} class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Book</button>
           <label>{msg}</label>
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -160,6 +187,25 @@ function HotelDesc(props){
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={hotelObj.img[4]}/>
     </div>
   </div>
+  {book==1?
+          <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col m-96 w-full mt-10 md:mt-0">
+          <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Payment:</h2>
+          <div class="relative mb-4">
+            <label for="cardnumber" class="leading-7 text-sm text-gray-600">CardNumber:</label>
+            <input onChange={(e)=>{e.preventDefault();setCard(e.target.value)}} type="text" value={cardNum} id="cardnumber" name="cardnumber"   class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+          <div class="relative mb-4">
+            <label for="expiry" class="leading-7 text-sm text-gray-600">expiry Date:</label>
+            <input onChange={(e)=>{e.preventDefault();setEx(e.target.value)}} type="date" id="expiry" name="expiry" value={expiry}  class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+          <div class="relative mb-4">
+            <label for="cvv" class="leading-7 text-sm text-gray-600">Cvv</label>
+            <input onChange={(e)=>{e.preventDefault();setC(e.target.value)}} type="password" value={c} id="cvv" name="cvv"   class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+          <button onClick={(e)=>{e.preventDefault();onPay(e)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Pay</button>
+        {msgPay}
+          {/* <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p> */}
+        </div>:<></>}
 </section>
         </div>
     )
