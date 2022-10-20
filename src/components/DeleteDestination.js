@@ -20,7 +20,7 @@ function DeleteDestination(){
 
     useEffect(()=>{
         getdestination()
-    },[])
+    },[destinations])
 
     const deleteFrontDeletion=(destid)=>{
       console.log(destid)
@@ -50,7 +50,7 @@ function DeleteDestination(){
 } position="right center">
           <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
             Are you sure to Delete Destination
-            <button onClick={()=>{deleteFrontDeletion(destinati._id)}}  class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
+            <button onClick={()=>{deleteFrontDeletion(destinati._id)}}  class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Yes
             </button>
             <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">

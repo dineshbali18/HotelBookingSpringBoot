@@ -24,7 +24,7 @@ function App() {
       <Route path="/hotels/:cityname" element={<Hotel/>}/>
       <Route path="/hotel/description" element={<HotelDesc/>}/>
       <Route path="/bookings" element={<Bookings/>}/>
-      <Route path="/signout" element={<Signout/>}/>
+      <Route path="/signout" element={<Signin/>}/>
       <Route path="/admin" element={<AdminDashboard/>}/>
       <Route path="/admin/create/destination" element={<CreateDestination/>}/>
       <Route path="/admin/delete/destination" element={<DeleteDestination/>}/>

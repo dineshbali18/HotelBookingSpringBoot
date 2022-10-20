@@ -16,12 +16,26 @@ function DeleteHotel(){
   while (data.length > 0) {
     splittedArray.push(data.splice(0,3));  
   }
-  // setDestinations(splittedArray);
       setHotels(splittedArray)
     }).catch((err)=>{
       console.log(err);
     })
 }
+
+useEffect(()=>{
+  getHotelsByCity2(city).then(data=>{
+    console.log(data);
+    const splittedArray = [];
+while (data.length > 0) {
+  splittedArray.push(data.splice(0,3));  
+}
+    setHotels(splittedArray)
+  }).catch((err)=>{
+    console.log(err);
+  })
+
+},[hotels])
+
 
 const deleteFrontHotel=(hotelid)=>{
   deleteHotel(hotelid)
@@ -58,7 +72,7 @@ const deleteFrontHotel=(hotelid)=>{
 } position="right center">
           <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
             Are you sure to Delete Hotel
-            <button onClick={()=>{deleteFrontHotel(hotelinside._id)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
+            <button onClick={()=>{deleteFrontHotel(hotelinside._id)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Yes
             </button>
             <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">

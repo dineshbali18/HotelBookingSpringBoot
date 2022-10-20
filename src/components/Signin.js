@@ -12,6 +12,8 @@ function Signin(){
         success:false
     })
 
+    const [msg,setMsg]=useState('')
+    const [err,setErr]=useState('')
 
     const {email,password}=user;
 
@@ -21,25 +23,34 @@ function Signin(){
 
       const onSubmit = event => {
         event.preventDefault();
-        // setUser({ ...user, error: false });
+        // setUser({ ...user, error: false })
+        console.log(email);
+        if(email==''||password==''){
+          setMsg('Enter all the fields!!')
+        }
+        else{
         signin({email, password })
           .then(data => {
-            // console.log(data);
+            // console.log();
+            setMsg(JSON.stringify(data.error));
             localStorage.setItem('token',data.token);
             localStorage.setItem('email',data.user.email);
             localStorage.setItem('name',data.user.name);
             localStorage.setItem('id',data.user._id);
             localStorage.setItem('role',data.user.role);
+            
             window.location.reload(false);
+              
         }
             )
-          .catch(()=>{console.log("Error in signup")});
+          .catch((err)=>{console.log(err)});
+      }
       };
 
     return (
         <div>
             
-      {localStorage.getItem('token')==undefined||null?
+      {(localStorage.getItem('token')=='undefined'||localStorage.getItem('token')==null)?
       <>
       <Navbar/>
     <div style={{backgroundImage:`url("https://img.freepik.com/free-photo/landscape-shot-beautiful-cholatse-mountains-body-water-khumbu-nepal_181624-24825.jpg?w=1380&t=st=1665850739~exp=1665851339~hmac=38a69aefd35b0fd7b7f6c677620de4807d47443b261b8de7f7e6d6f34fc6d7a7")`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
@@ -60,7 +71,7 @@ function Signin(){
         <input type="password" id="password" name="password" onChange={handleChange("password")} value={password}  class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <button onClick={(e)=>{onSubmit(e)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">SignIn</button>
-      {/* <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p> */}
+      <p class="text-ls text-gray-500 mt-3 ml-10">{msg}</p>
     </div>
   </div>
 </section>

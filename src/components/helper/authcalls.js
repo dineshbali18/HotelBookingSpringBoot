@@ -26,9 +26,13 @@ export const signin = user => {
     body: JSON.stringify(user)
   })
     .then(response => {
+      // console.log("res",response.json());
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err)=>{
+      console.log("err",err);
+      // return err.json();
+    });
 };
 
 export const getBookings=(id)=>{

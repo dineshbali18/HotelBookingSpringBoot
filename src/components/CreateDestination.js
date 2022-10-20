@@ -52,7 +52,7 @@ function CreateDestination(){
 } position="right center">
           <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
             Are you sure to Create Destination
-            <button onClick={(e)=>{console.log("jkdsbfdn");onSubmit(e)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+            <button onClick={(e)=>{console.log("jkdsbfdn");onSubmit(e)}} class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Yes
             </button>
             <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
