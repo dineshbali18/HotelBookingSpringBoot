@@ -42,7 +42,7 @@ function DeleteDestination(){
     <div style={{border:'solid'}} class="flex flex-wrap m-2">
       <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
         <div class="h-full flex items-center border-gray-200 border p-2 rounded-lg">
-          <img alt="team" class="w-24 h-24 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-10" src={destinati.img}/>
+          <img alt="team" class="w-24 h-24 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-10" src={destinati.image}/>
           <div class="flex-grow">
             <h2 class="text-gray-900 title-font font-medium">{destinati.name}</h2>
             {/* <p class="text-gray-500">{destinati.description}</p> */}
@@ -50,7 +50,7 @@ function DeleteDestination(){
 } position="right center">
           <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
             Are you sure to Delete Destination
-            <button onClick={()=>{deleteFrontDeletion(destinati._id)}}  class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+            <button onClick={()=>{deleteFrontDeletion(destinati.id)}}  class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Yes
             </button>
             <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">

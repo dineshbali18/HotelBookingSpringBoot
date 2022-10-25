@@ -19,6 +19,7 @@ function Bookings(){
   },[])
     return (
       <>
+      
       {(localStorage.getItem('token')!='undefined'||localStorage.getItem('token')!=null)?
         <div>
             <Navbar/>
@@ -34,8 +35,8 @@ function Bookings(){
       <div class="py-8 flex flex-wrap md:flex-nowrap">
         <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span class="font-semibold title-font text-gray-700">Destination: {booking.destination}</span>
-          <span class="mt-1 text-gray-500 text-sm">FROM: {booking.from}</span>
-          <span class="mt-1 text-gray-500 text-sm">TO: {booking.to}</span>
+          <span class="mt-1 text-gray-500 text-sm">FROM: {booking.fromDate}</span>
+          <span class="mt-1 text-gray-500 text-sm">TO: {booking.toDate}</span>
 
         </div>
         <div class="md:flex-grow flex flex-col">

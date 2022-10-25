@@ -7,7 +7,7 @@ import 'reactjs-popup/dist/index.css';
 function CreateDestination(){
   const [dest,setDest]=useState({
     name:"",
-    img:"",
+    image:"",
     description:""
   })
 
@@ -15,7 +15,7 @@ function CreateDestination(){
     setDest({ ...dest,[name]: event.target.value });
   };
 
-  const {name,img,description}=dest;
+  const {name,image,description}=dest;
 
   const onSubmit=(e)=>{
     e.preventDefault();
@@ -42,7 +42,7 @@ function CreateDestination(){
           </div>
           <div class="relative mb-4">
             <label for="img" class="leading-7 text-sm text-gray-600">Image Link:</label>
-            <input onChange={handleChange("img")}  type="text"  id="img" name="img" value={img}   class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+            <input onChange={handleChange("image")}  type="text"  id="image" name="image" value={image}   class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
           <div class="relative mb-4">
             <label for="description" class="leading-7 text-sm text-gray-600">descriptionription:</label>

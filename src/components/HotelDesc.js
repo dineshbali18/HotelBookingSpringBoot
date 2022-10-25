@@ -71,6 +71,7 @@ function HotelDesc(props){
 
   const onSubmit=(e)=>{
     e.preventDefault();
+    console.log(hotelObj);
     let price=adultCount*(hotelObj.adultPrice)+childCount*(hotelObj.childPrice)
     let hotel_name=hotelObj.hotelname;
     let adults_count=adultCount;
@@ -102,7 +103,9 @@ function HotelDesc(props){
       setMsg('Details not Satisfied.. ')
     }
     else{
-    addBooking({hotel_name,adults_count,children_count,price,destination,userId,from,to})
+      let fromDate=from;
+      let toDate=to;
+    addBooking({hotel_name,adults_count,children_count,price,destination,userId,fromDate,toDate})
     setMsg('Booking Done')
     setPay('Payment and Booking are Successfull')
     }
@@ -184,7 +187,7 @@ function HotelDesc(props){
           </button>
         </div>
       </div>
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={hotelObj.img[4]}/>
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={hotelObj.img[3]}/>
     </div>
   </div>
   {book==1?

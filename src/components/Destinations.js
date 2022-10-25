@@ -39,7 +39,7 @@ function Destination(){
       <>
       {dest.map((destinati,inde)=>{return(
         <div class="w-1/3 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={destinati.img} alt="blog"/>
+          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={destinati.image} alt="blog"/>
           <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-600 mb-1">Destination:</h2>
             <h1 class="title-font text-lg font-large text-gray-900 mb-3">{destinati.name}</h1>

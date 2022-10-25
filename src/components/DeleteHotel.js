@@ -72,7 +72,7 @@ const deleteFrontHotel=(hotelid)=>{
 } position="right center">
           <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
             Are you sure to Delete Hotel
-            <button onClick={()=>{deleteFrontHotel(hotelinside._id)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+            <button onClick={()=>{deleteFrontHotel(hotelinside.id)}} class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
             Yes
             </button>
             <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">

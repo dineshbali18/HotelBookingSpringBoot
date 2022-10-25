@@ -1,8 +1,8 @@
-import { API } from "../../../src/backend";
+import { API,API1,API2,API3,API4 } from "../../../src/backend";
 
 export const signup = user => {
     console.log(user);
-  return fetch(`${API}/signup`, {
+  return fetch(`${API4}/register`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -17,7 +17,7 @@ export const signup = user => {
 };
 
 export const signin = user => {
-  return fetch(`${API}/signin`, {
+  return fetch(`${API1}/login`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -36,7 +36,7 @@ export const signin = user => {
 };
 
 export const getBookings=(id)=>{
-  return fetch(`${API}/user/bookings/${id}`,{
+  return fetch(`${API4}/user/bookings/${id}`,{
     method:'GET',
     headers:{
         Accept: "application/json",
@@ -48,22 +48,22 @@ export const getBookings=(id)=>{
   .catch(err => console.log(err));
 }
 
-export const getNameById=(id)=>{
-  return fetch(`${API}/user/${id}`,{
-    method:'GET',
-    headers:{
-        Accept: "application/json",
-        // Authorization: `Bearer ${token}`
-    }
-}).then(response => {
-    return response.json();
-  })
-  .catch(err => console.log(err));
-}
+// export const getNameById=(id)=>{
+//   return fetch(`${API}/user/${id}`,{
+//     method:'GET',
+//     headers:{
+//         Accept: "application/json",
+//         // Authorization: `Bearer ${token}`
+//     }
+// }).then(response => {
+//     return response.json();
+//   })
+//   .catch(err => console.log(err));
+// }
 
 
 export const getAllBookings=()=>{
-  return fetch(`${API}/all/bookings`,{
+  return fetch(`${API4}/all/bookings`,{
     method:'GET',
     headers:{
         Accept: "application/json",
@@ -77,20 +77,21 @@ export const getAllBookings=()=>{
 
 
 export const getdestinations=()=>{
-    return fetch(`${API}/destinations`,{
+    return fetch(`${API3}/destinations`,{
         method:'GET',
         headers:{
             Accept: "application/json",
             // Authorization: `Bearer ${token}`
         }
     }).then(response => {
+      console.log("Ressssssssssssssssssssss",response);
         return response.json();
       })
       .catch(err => console.log(err));
 }
 
 export const getHotelsByCity=(city)=>{
-  return fetch(`${API}/destination/${city.cityname}/hotels`,{
+  return fetch(`${API2}/destination/${city.cityname}/hotels`,{
     method:'GET',
     headers:{
         Accept: "application/json",
@@ -103,7 +104,7 @@ export const getHotelsByCity=(city)=>{
 
 }
 export const getHotelsByCity2=(city)=>{
-  return fetch(`${API}/destination/${city}/hotels`,{
+  return fetch(`${API2}/destination/${city}/hotels`,{
     method:'GET',
     headers:{
         Accept: "application/json",
@@ -117,7 +118,9 @@ export const getHotelsByCity2=(city)=>{
 }
 
 export const addBooking=(bookdata)=>{
-  return fetch(`${API}/user/create/booking`,{
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  console.log(bookdata);
+  return fetch(`${API4}/user/create/booking`,{
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -142,11 +145,11 @@ export const signout = next => {
     localStorage.removeItem("jwt");
     next();
 
-    return fetch(`${API}/signout`, {
-      method: "GET"
-    })
-      .then(response => console.log("signout success"))
-      .catch(err => console.log(err));
+    // return fetch(`${API}/signout`, {
+    //   method: "GET"
+    // })
+    //   .then(response => console.log("signout success"))
+    //   .catch(err => console.log(err));
   }
 };
 
@@ -162,19 +165,19 @@ export const isAutheticated = () => {
 };
 
 export const deleteHotel=(hotelid)=>{
-  return fetch(`${API}/destination/delete/hotel/${hotelid}`,{
+  return fetch(`${API2}/destination/delete/hotel/${hotelid}`,{
     method:'DELETE'
   })
 }
 
 export const deleteDestinationback=(destinationid)=>{
-  return fetch(`${API}/admin/delete/destinations/${destinationid}`,{
+  return fetch(`${API3}/admin/delete/destinations/${destinationid}`,{
     method:'DELETE'
   })
 }
 
 export const createDestination=(destData)=>{
-  return fetch(`${API}/admin/create/destination`,{
+  return fetch(`${API3}/admin/create/destination`,{
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -183,13 +186,14 @@ export const createDestination=(destData)=>{
     body: JSON.stringify(destData)
   })
     .then(response => {
+      console.log(response);
       return response.json();
     })
     .catch(err => console.log(err));
 }
 
 export const createHotel=(hotelData)=>{
-  return fetch(`${API}/destination/create/hotels`,{
+  return fetch(`${API2}/destination/create/hotels`,{
     method: "POST",
     headers: {
       Accept: "application/json",

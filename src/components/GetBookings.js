@@ -17,15 +17,18 @@ function GetBookings(){
 // userid--email
     return (
         <section class="text-gray-600 body-font">
-          <div class="container px-5 py-24 mx-auto">
+          <div class="text-center mb-20">
+      <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-2 mt-8">Bookings</h1>
+    </div>
+          <div class="container px-5 py-4 mx-auto">
             <div class="flex flex-wrap -mx-4 -my-8">
                 {bookings.map((book,index)=>{
-                    let month=book.from &&book.from.substring(5,7);
-                    let year=book.from && book.from.substring(0,4);
-                    let date=book.from && book.from.substring(8,10);
-                    let month1=book.to &&book.to.substring(5,7);
-                    let year1=book.to && book.to.substring(0,4);
-                    let date1=book.to && book.to.substring(8,10);
+                    let month=book.fromDate &&book.fromDate.substring(5,7);
+                    let year=book.fromDate && book.fromDate.substring(0,4);
+                    let date=book.fromDate && book.fromDate.substring(8,10);
+                    let month1=book.toDate &&book.toDate.substring(5,7);
+                    let year1=book.toDate && book.toDate.substring(0,4);
+                    let date1=book.toDate && book.toDate.substring(8,10);
                     return (
                         <div style={{border:'solid',margin:'10px'}} class="py-8 px-10 lg:w-1/0.1">
                 <div class="h-full flex items-start">
