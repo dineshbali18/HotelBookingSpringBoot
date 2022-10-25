@@ -31,13 +31,13 @@ function Signin(){
         else{
         signin({email, password })
           .then(data => {
-            // console.log();
+            console.log(data);
             setMsg(JSON.stringify(data.error));
-            localStorage.setItem('token',data.token);
-            localStorage.setItem('email',data.user.email);
-            localStorage.setItem('name',data.user.name);
-            localStorage.setItem('id',data.user._id);
-            localStorage.setItem('role',data.user.role);
+            localStorage.setItem('token',data.jwt);
+            localStorage.setItem('email',data.email);
+            localStorage.setItem('name',data.name);
+            localStorage.setItem('id',data.id);
+            localStorage.setItem('role',data.role);
             
             window.location.reload(false);
               

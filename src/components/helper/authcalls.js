@@ -2,7 +2,7 @@ import { API,API1,API2,API3,API4 } from "../../../src/backend";
 
 export const signup = user => {
     console.log(user);
-  return fetch(`${API4}/register`, {
+  return fetch(`${API1}/register`, {
     method: "POST",
     headers: {
       Accept: "application/json",
