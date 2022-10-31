@@ -34,7 +34,7 @@ function Destination(){
         <Navbar/>
         <section class="text-gray-600 body-font">
   <div class="container px-5 py-0 mx-auto flex flex-row">
-    <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
+    <div style={{display:'flex',flexWrap:'wrap'}}>
     {destinations.map((dest,index)=>{return(
       <>
       {dest.map((destinati,inde)=>{return(

@@ -1,9 +1,24 @@
-import {useState} from 'react'
-import { createHotel } from './helper/authcalls'
+import {useState,useEffect} from 'react'
+import { createHotel,getdestinations } from './helper/authcalls'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 function CreateHotel(){
+
+  const [destinations,setDestinations]=useState([])
+
+  const getdestination=()=>{
+      getdestinations().then(data=>{
+        console.log("dddddddddddddddddddddddddddddddddddddddddddd",data);
+          setDestinations(data);
+      }).catch(err=>{console.log(err)})
+  }
+
+  useEffect(()=>{
+      getdestination()
+  },[])
+
+
   const [hotel,setHotel]=useState({
     hotelname:"",
   adultPrice:"",
@@ -12,6 +27,8 @@ function CreateHotel(){
   hotel_destination:"",
   hotel_description:""
   })
+
+
 
   const [img1,setimg1]=useState('')
   const [img2,setimg2]=useState('')
@@ -75,7 +92,20 @@ const {hotelname,adultPrice,childPrice,hotel_destination,hotel_description}=hote
           </div>
           <div class="relative mb-4">
             <label for="hotel_destination" class="leading-7 text-sm text-gray-600">Select Destination Name:</label>
-            <input onChange={handleChange("hotel_destination")} type="text"  id="hotel_destination" name="hotel_destination" value={hotel_destination}  class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+            <select style={{fontSize:'15px'}} onChange={handleChange("hotel_destination")} 
+          class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+          value={hotel_destination}>
+              <option>Select</option>
+            {destinations.map((cid, index) => {
+              return(
+              <option key={index} value={cid.name}>
+                {cid.name}
+              </option>
+              )
+      })}
+                
+            </select>
+            {/* <input type="text"  id="hotel_destination" name="hotel_destination" value={hotel_destination}  class="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/> */}
           </div>
           <div class="relative mb-4">
             <label for="img1" class="leading-7 text-sm text-gray-600">Image Link 1:</label>
